@@ -1,0 +1,14 @@
+services:
+  service-a:
+    build: ./services/service-a
+    container_name: service-a
+    ports:
+      - "5000:5000"
+    depends_on:
+      - service-b
+
+  service-b:
+    build: ./services/service-b
+    container_name: service-b
+    ports:
+      - "5001:5001"
