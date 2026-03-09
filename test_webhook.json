@@ -1,0 +1,16 @@
+{
+  "alerts": [
+    {
+      "labels": {
+        "alertname": "ServiceUnhealthy",
+        "instance": "service-b:5001",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "Service-B health status is 0",
+        "summary": "Service-B is unhealthy"
+      },
+      "status": "firing"
+    }
+  ]
+}

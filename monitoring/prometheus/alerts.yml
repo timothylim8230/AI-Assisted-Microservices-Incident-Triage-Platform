@@ -1,0 +1,30 @@
+groups:
+  - name: service_health
+    interval: 5s
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 5s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.instance }} is down"
+          description: "Service {{ $labels.instance }} has been down for more than 5 seconds."
+
+      - alert: ServiceUnhealthy
+        expr: service_b_health_status == 0
+        for: 5s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Service-B is unhealthy"
+          description: "Service-B health status is 0, indicating the service is in an unhealthy state."
+
+      - alert: HighErrorRate
+        expr: rate(service_b_http_requests_total{status=~"5.."}[1m]) > 0.1
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate on Service-B"
+          description: "Service-B has a high error rate of {{ $value }} errors per second."

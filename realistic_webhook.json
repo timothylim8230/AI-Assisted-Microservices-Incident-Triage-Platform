@@ -1,0 +1,39 @@
+{
+  "alerts": [
+    {
+      "labels": {
+        "alertname": "ServiceUnhealthy",
+        "instance": "service-b:5001",
+        "job": "service-b",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "Service-B health status is 0, indicating the service is in an unhealthy state.",
+        "summary": "Service-B is unhealthy"
+      },
+      "status": "firing",
+      "startsAt": "2026-03-09T06:11:40.348Z",
+      "endsAt": "2026-03-09T06:17:50.348Z",
+      "generatorURL": "http://prometheus:9090/graph",
+      "fingerprint": "0c06c8552d8ebbc4"
+    },
+    {
+      "labels": {
+        "alertname": "HighErrorRate",
+        "endpoint": "/health",
+        "instance": "service-b:5001",
+        "job": "service-b",
+        "method": "GET",
+        "severity": "critical",
+        "status": "500"
+      },
+      "annotations": {
+        "description": "Service-B has a high error rate of 0.21819371965743586 errors per second.",
+        "summary": "High error rate on Service-B"
+      },
+      "status": "firing",
+      "startsAt": "2026-03-09T05:59:55.348Z",
+      "endsAt": "2026-03-09T06:16:55.348Z"
+    }
+  ]
+}

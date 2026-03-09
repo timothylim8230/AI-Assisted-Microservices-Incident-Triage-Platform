@@ -1,0 +1,23 @@
+groups:
+  - name: microservice_alerts
+    rules:
+      - alert: ServiceBUnhealthy
+        expr: service_b_health_status == 0
+        for: 10s
+        labels:
+          severity: critical
+          service: service-b
+        annotations:
+          summary: "service-b is unhealthy"
+          description: "service-b health status has been 0 for at least 10 seconds."
+
+      - alert: ServiceADependencyUnhealthy
+        expr: service_a_dependency_service_b_healthy == 0
+        for: 10s
+        labels:
+          severity: critical
+          service: service-a
+          dependency: service-b
+        annotations:
+          summary: "service-a dependency on service-b is unhealthy"
+          description: "service-a reports that service-b is unhealthy or unreachable."
